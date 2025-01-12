@@ -46,6 +46,20 @@ public class Tree {
         }
     }
 
+    public boolean search(int key) {
+        Node curr = root;
+        while (curr != null) {
+            if (key == curr.data) {
+                return true;
+            } else if (key < curr.data) {
+                curr = curr.lchild;
+            } else {
+                curr = curr.rchild;
+            }
+        }
+        return false;
+    }
+
     public void inOrder(Node lroot) {
         if (lroot != null) {
             inOrder(lroot.lchild);
@@ -80,7 +94,8 @@ public class Tree {
             System.out.println("2. Display InOrder");
             System.out.println("3. Display PreOrder");
             System.out.println("4. Display PostOrder");
-            System.out.println("5. Exit");
+            System.out.println("5. Search for a Node");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -106,12 +121,21 @@ public class Tree {
                     System.out.println();
                     break;
                 case 5:
+                    System.out.print("Enter value to search: ");
+                    int key = scanner.nextInt();
+                    if (tree.search(key)) {
+                        System.out.println("Node " + key + " found in the tree.");
+                    } else {
+                        System.out.println("Node " + key + " not found in the tree.");
+                    }
+                    break;
+                case 6:
                     System.out.println("Exiting...");
                     break;
                 default:
                     System.out.println("Invalid choice, please try again.");
             }
-        } while (choice != 5);
+        } while (choice != 6);
 
         scanner.close();
     }
