@@ -99,7 +99,7 @@ class LinkList {
     }
 }
 
-public class PolynomialAddition {
+public class PolynomialAdd {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
